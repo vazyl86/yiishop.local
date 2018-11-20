@@ -18,8 +18,6 @@ Modal::begin([
 ]);
 ?>
 <div class="site-login">
-
-
     <p>Please fill out the following fields to login:</p>
 
     <div class="row">
