@@ -17,7 +17,7 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        'baseUrl' => '/',
+        'baseUrl' => '',
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -44,6 +44,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
             ],
         ],
 
