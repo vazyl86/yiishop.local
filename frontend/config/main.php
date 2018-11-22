@@ -13,11 +13,13 @@ return [
     'homeUrl'=>'/',
 
     'controllerNamespace' => 'frontend\controllers',
+    'language' => 'ru-RU',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
         'baseUrl' => '',
+        //'defaultRoute' => 'main/index',
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
