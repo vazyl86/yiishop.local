@@ -46,7 +46,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-
+                'fronend/web' => 'main',
+                'category/<id:\d+>' => 'category/view',
             ],
         ],
 
