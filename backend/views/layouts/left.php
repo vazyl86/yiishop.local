@@ -1,3 +1,9 @@
+<?php
+    use backend\models\User;
+    use backend\controllers\UserController;
+
+
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -8,7 +14,7 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Администратор</p>
+                <p><?= Yii::$app->user->identity->lastname; ?> <?= Yii::$app->user->identity->firstname; ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -30,9 +36,41 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/']],
+                    ['label' => 'Каталог', 'icon' => 'file', 'options' => ['class' => 'header']],
+                    [
+                        'label' => 'Каталог',
+                        'icon' => 'cubes',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Категории', 'icon' => 'cube', 'url' => ['/gii'],],
+                            ['label' => 'Товары', 'icon' => 'shopping-basket', 'url' => ['/debug'],],
+                            [
+                                'label' => 'Level One',
+                                'icon' => 'circle-o',
+                                'url' => '#',
+                                'items' => [
+                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+                                    [
+                                        'label' => 'Level Two',
+                                        'icon' => 'circle-o',
+                                        'url' => '#',
+                                        'items' => [
+                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    ['label' => 'Управление', 'options' => ['class' => 'header']],
+                    ['label' => 'Пользователи', 'icon' => 'user-o', 'url' => ['user/index']],
+                    ['label' => 'Группы', 'icon' => 'group', 'url' => ['group/index']],
+                    ['label' => 'Настройки', 'icon' => 'gear', 'url' => ['setting/index']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

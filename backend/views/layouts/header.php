@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use backend\models\User;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -230,7 +231,7 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Администратор</span>
+                        <span class="hidden-xs"><?= Yii::$app->user->identity->lastname; ?> <?= Yii::$app->user->identity->firstname; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -239,7 +240,7 @@ use yii\helpers\Html;
                                  alt="User Image"/>
 
                             <p>
-                                Администратор
+                                <?= Yii::$app->user->identity->lastname; ?> <?= Yii::$app->user->identity->firstname; ?>
                                 <small>2018</small>
                             </p>
                         </li>
@@ -258,7 +259,7 @@ use yii\helpers\Html;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="/admin/user/view?id=<?= Yii::$app->user->id;?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
