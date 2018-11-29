@@ -2,6 +2,82 @@
 
  $('#sl2').slider();
 
+    $('.catalog').dcAccordion({
+        speed: 300
+    });
+
+    function showCart(cart){
+        $('#cart .modal-body').html(cart);
+        $('#cart').modal();
+    }
+
+    $('#cart .modal-body').on('click','.del-item',function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/frontend/web/cart/del-item',
+            data: {id: id},
+            type: 'GET',
+            success: function(e){
+                if(!e) alert('Ошибка!');
+                //console.log(e);
+                showCart(e);
+            },
+            error: function(e){
+                alert('Error!');
+            }
+        });
+    });
+    
+    function getCart() {
+        $.ajax({
+            url: '/frontend/web/cart/show',
+            type: 'GET',
+            success: function(e){
+                if(!e) alert('Ошибка!');
+                console.log(e);
+                showCart(e);
+            },
+            error: function(e){
+                alert('Error!');
+            }
+        });
+        return false;
+    }
+
+    function clearCart() {
+        $.ajax({
+            url: '/frontend/web/cart/clear',
+            type: 'GET',
+            success: function(e){
+                if(!e) alert('Ошибка!');
+                console.log(e);
+                showCart(e);
+            },
+            error: function(e){
+                alert('Error!');
+            }
+        });
+    }
+
+    $('.add-to-cart').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id'),
+            qty = $('#qty').val();
+        $.ajax({
+            url: '/frontend/web/cart/add',
+            data: {id: id, qty: qty},
+            type: 'GET',
+            success: function(e){
+                if(!e) alert('Ошибка!');
+                //console.log(e);
+                showCart(e);
+            },
+            error: function(e){
+                alert('Error!');
+            }
+        });
+    });
+
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
 	};	
